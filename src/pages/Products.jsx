@@ -1,4 +1,4 @@
-import {Button, Card, CardActions, CardContent, CardMedia, Grid, InputBase, Typography} from "@mui/material";
+import {Grid, InputBase} from "@mui/material";
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import React, {useState, useEffect} from 'react';
@@ -17,6 +17,7 @@ function Products() {
     const loadProducts = () => {
         axios.get('https://fakestoreapi.com/products')
             .then(res => {
+
                 // console.log(res)
                 setProducts(res.data)
             }).catch(err => {
@@ -43,6 +44,7 @@ function Products() {
         if (name === '') {
             loadProducts()
         }
+        // eslint-disable-next-line array-callback-return
         products.map((item) => {
             if (item.title.toLowerCase().includes(name)) {
                 list.push(item)
